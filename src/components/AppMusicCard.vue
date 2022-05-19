@@ -1,19 +1,27 @@
 <template>
-    <div class=" p-3 m-1 my-bg-color col-2 text-center">
-        <img src="https://www.onstageweb.com/wp-content/uploads/2018/09/bon-jovi-new-jersey.jpg" alt="">
-        <h3>title</h3>
+    <div class=" p-3 m-1 my-bg-color col-lg-2 col-md-3 text-center">
+        <img :src="albumObj.poster" alt="">
+        <h3>{{ albumObj.title }}</h3>
+        <p>{{ albumObj.author }}</p>
+        <p>{{ albumObj.year }}</p>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'AppMusicCard'
+    name: 'AppMusicCard',
+    props:{
+            albumObj: Object
+        }
 }
 </script>
 
 <style lang="scss" scoped>
 div{
     color: white;
+    p{
+        color: gray;
+    }
 }
 
 .my-bg-color{

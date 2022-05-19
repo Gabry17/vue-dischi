@@ -2,7 +2,7 @@
 <main class="p-5">
     <div class="container">
         <div class="row">
-            <AppMusicCard v-for="element in album" :key="element.author"/>
+            <AppMusicCard v-for="element in album" :key="element.author" :albumObj="element"/>
         </div>
     </div>
 </main>
@@ -33,9 +33,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main{
-    height: calc(100vh - 70px);
-    background-color: #262660;
-}
 
 </style>
