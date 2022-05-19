@@ -1,7 +1,10 @@
 <template>
 <main class="p-5">
     <div class="container">
-        <div class="row">
+        <div v-if="loading">
+            <div class="text-center">LOADING</div>
+        </div>
+        <div v-else class="row">
             <AppMusicCard v-for="element in album" :key="element.author" :albumObj="element"/>
         </div>
     </div>
@@ -20,13 +23,15 @@ export default {
     },
     data(){
         return{
-            album: []
+            album: [],
+            loading: true,
         }
     },
     created(){
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((resp) => {
             this.album = resp.data.response;
+            this.loading = false;
         })
     }
 }
