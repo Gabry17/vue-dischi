@@ -2,7 +2,7 @@
 <main class="p-5">
     <div class="container">
         <div class="row">
-            <AppMusicCard />
+            <AppMusicCard v-for="element in album" :key="element.author"/>
         </div>
     </div>
 </main>
@@ -11,11 +11,23 @@
 <script>
 
 import AppMusicCard from './AppMusicCard.vue';
+import axios from 'axios';
 
 export default {
     name: 'AppMain',
     components: {
         AppMusicCard
+    },
+    data(){
+        return{
+            album: []
+        }
+    },
+    created(){
+        axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+        .then((resp) => {
+            this.album = resp.data.response;
+        })
     }
 }
 </script>
