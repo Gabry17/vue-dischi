@@ -1,12 +1,12 @@
 <template>
 <main class="p-5">
     <div class="container">
-        <AppGenre />
+        <AppGenre @searchChange="searchReceived($event)" />
         <div v-if="loading">
             <div class="text-center bg-primary">LOADING</div>
         </div>
         <div v-else class="g-3 row row-cols-5">
-            <AppMusicCard v-for="element in album" :key="element.author" :albumObj="element"/>
+            <AppMusicCard v-for="element in valueGenre" :key="element.author" :albumObj="element"/>
         </div>
     </div>
 </main>
@@ -28,6 +28,21 @@ export default {
         return{
             album: [],
             loading: true,
+            text: ''
+        }
+    },
+    methods: {
+        searchReceived(elem){
+            this.text = elem.toLowerCase();
+        }
+    },
+    computed:{
+        valueGenre(){
+            const valueArray = this.album.filter((e) => {
+                return e.genre.toLowerCase().includes(this.text)
+            })
+            return valueArray
+            //console.log(this.album);
         }
     },
     created(){

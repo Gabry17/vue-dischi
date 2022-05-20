@@ -1,6 +1,6 @@
 <template>
   <div class="select">
-    <select name="" id="" v-model='searchGenre'>
+    <select name="" id="" v-model='searchGenre' @change="$emit('searchChange', searchGenre)">
       <option value=""></option>
       <option value="pop">Pop</option>
       <option value="rock">Rock</option>
