@@ -1,7 +1,8 @@
 <template>
-    <div class=" p-3 m-1 my-bg-color col-lg-2 col-md-3 text-center">
+    <div class="mr-1 p-3 my-bg-color text-center">
         <img :src="albumObj.poster" alt="">
         <h3>{{ albumObj.title }}</h3>
+        <h4>{{ albumObj.genre }}</h4>
         <p>{{ albumObj.author }}</p>
         <p>{{ albumObj.year }}</p>
     </div>

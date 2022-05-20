@@ -1,10 +1,11 @@
 <template>
 <main class="p-5">
     <div class="container">
+        <AppGenre />
         <div v-if="loading">
-            <div class="text-center">LOADING</div>
+            <div class="text-center bg-primary">LOADING</div>
         </div>
-        <div v-else class="row">
+        <div v-else class="g-3 row row-cols-5">
             <AppMusicCard v-for="element in album" :key="element.author" :albumObj="element"/>
         </div>
     </div>
@@ -14,12 +15,14 @@
 <script>
 
 import AppMusicCard from './AppMusicCard.vue';
+import AppGenre from './AppGenre.vue';
 import axios from 'axios';
 
 export default {
     name: 'AppMain',
     components: {
-        AppMusicCard
+        AppMusicCard,
+        AppGenre
     },
     data(){
         return{
