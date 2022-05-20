@@ -2,7 +2,7 @@
 <main class="p-5">
     <div class="container">
         <AppGenre @searchChange="searchReceived($event)" />
-        <AppAuthor />
+        <AppAuthor @authorChange="authorName($event)" />
         <div v-if="loading">
             <div class="text-center bg-primary">LOADING</div>
         </div>
@@ -31,21 +31,24 @@ export default {
         return{
             album: [],
             loading: true,
-            text: ''
+            text: '',
+            name: ''
         }
     },
     methods: {
         searchReceived(elem){
             this.text = elem.toLowerCase();
+        },
+        authorName(item){
+            this.name = item.toLowerCase();
         }
     },
     computed:{
         valueGenre(){
             const valueArray = this.album.filter((e) => {
-                return e.genre.toLowerCase().includes(this.text)
+                return e.genre.toLowerCase().includes(this.text) && e.author.toLowerCase().includes(this.name);
             })
-            return valueArray
-            //console.log(this.album);
+            return valueArray;
         }
     },
     created(){

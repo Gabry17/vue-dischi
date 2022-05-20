@@ -1,7 +1,7 @@
 <template>
   <div class="author">
       <label for="filterAuthor">Artisti:</label>
-      <select name="filter author" id="filterAuthor">
+      <select name="filter author" id="filterAuthor" v-model="searchAuthor" @change="$emit('authorChange',searchAuthor)">
           <option value="">All</option>
           <option value="bon jovi">Bon Jovi</option>
           <option value="queen">Queen</option>
@@ -12,14 +12,19 @@
           <option value="deep purple">Deep Purple</option>
           <option value="metallica">Metallica</option>
           <option value="dave weckl">Dave Weckl</option>
-          <option value="michael jackson">Michael Jackson</option>
+          <option value="michael jacjson">Michael Jackson</option>
       </select>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'AppAuthor'
+    name: 'AppAuthor',
+    data(){
+        return{
+            searchAuthor: ''
+        }
+    }
 }
 </script>
 
