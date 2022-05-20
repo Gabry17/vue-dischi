@@ -2,6 +2,7 @@
 <main class="p-5">
     <div class="container">
         <AppGenre @searchChange="searchReceived($event)" />
+        <AppAuthor />
         <div v-if="loading">
             <div class="text-center bg-primary">LOADING</div>
         </div>
@@ -16,13 +17,15 @@
 
 import AppMusicCard from './AppMusicCard.vue';
 import AppGenre from './AppGenre.vue';
+import AppAuthor from './AppAuthor.vue';
 import axios from 'axios';
 
 export default {
     name: 'AppMain',
     components: {
         AppMusicCard,
-        AppGenre
+        AppGenre,
+        AppAuthor
     },
     data(){
         return{
